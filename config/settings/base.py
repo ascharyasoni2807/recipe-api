@@ -225,22 +225,32 @@ LOGGING = {
     },
     'handlers': {
         'file': {
-            'level': 'INFO',  # Use uppercase for log level
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'app.log'),
-            'formatter': 'verbose',  # Optionally specify a formatter
+            'formatter': 'verbose',
         },
         'console': {
-            'level': 'INFO',  # Use uppercase for log level
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
-            'formatter': 'simple',  # Optionally specify a formatter
+            'formatter': 'simple',
         },
     },
     'loggers': {
         'django': {
             'handlers': ['file', 'console'],
-            'level': 'INFO',  # Use uppercase for log level
+            'level': 'INFO',
             'propagate': True,
+        },
+        'django.server': {  # Adjust the log level or handlers if necessary
+            'handlers': ['file', 'console'],
+            'level': 'WARNING',  # Change this to WARNING to reduce verbosity
+            'propagate': True,
+        },
+        'recipe': {  # Custom logger for your application
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': False,
         },
     },
 }
