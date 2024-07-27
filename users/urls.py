@@ -6,6 +6,7 @@ from users import views
 app_name = 'users'
 
 urlpatterns = [
+    path('listuser/', views.UserListAPIView.as_view(), name='user-list'),
     path('register/', views.UserRegisterationAPIView.as_view(),
          name="create-user"),
     path('login/', views.UserLoginAPIView.as_view(), name="login-user"),

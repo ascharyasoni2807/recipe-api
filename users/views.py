@@ -1,4 +1,4 @@
-from rest_framework import status
+from rest_framework import status , generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateAPIView, UpdateAPIView
@@ -7,7 +7,8 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 
 from recipe.models import Recipe
-from .models import Profile
+from utils.pagination import CustomPageNumberPagination
+from .models import CustomUser, Profile
 from recipe.serializers import RecipeSerializer
 from . import serializers
 
@@ -81,7 +82,15 @@ class UserAPIView(RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
-
+    
+class UserListAPIView(generics.ListAPIView):
+    """
+    Get: a collection of users
+    """
+    queryset = CustomUser.objects.all()
+    serializer_class = serializers.CustomUserSerializer
+    permission_classes = (AllowAny,)
+    pagination_class = CustomPageNumberPagination
 
 class UserProfileAPIView(RetrieveUpdateAPIView):
     """

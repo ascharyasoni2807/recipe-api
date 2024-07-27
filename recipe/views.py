@@ -3,6 +3,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 
+from utils.pagination import CustomPageNumberPagination
+
 from .models import Recipe, RecipeLike
 from .serializers import RecipeLikeSerializer, RecipeSerializer
 from .permissions import IsAuthorOrReadOnly
@@ -16,6 +18,8 @@ class RecipeListAPIView(generics.ListAPIView):
     serializer_class = RecipeSerializer
     permission_classes = (AllowAny,)
     filterset_fields = ('category__name', 'author__username')
+    pagination_class = CustomPageNumberPagination
+
 
 
 class RecipeCreateAPIView(generics.CreateAPIView):
