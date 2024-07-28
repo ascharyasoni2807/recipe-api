@@ -51,6 +51,12 @@ class RecipeAPITestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Recipe.objects.count(), 2)
 
+    def test_recipe_like_success(self):
+        self.logger.info('Testing successful recipe like')
+        response = self.client.post(f'/api/recipe/{self.recipe.id}/like/')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(RecipeLike.objects.filter(recipe=self.recipe).count(), 1)
+        self.assertTrue(RecipeLike.objects.filter(user=self.user, recipe=self.recipe).exists())
     def test_recipe_like_duplicate(self):
         self.logger.info('Testing duplicate recipe like')
         RecipeLike.objects.create(user=self.user, recipe=self.recipe)

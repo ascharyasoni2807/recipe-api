@@ -84,7 +84,6 @@ class UserAPITestCase(APITestCase):
         self.assertEqual(response.data['bookmarks'], [])
 
     def test_user_bookmarks(self):
-        print(self.profile.bookmarks)
         url = f'/api/user/profile/{self.user.id}/bookmarks/'
         data = {'id': self.recipe.id}
         response = self.client.post(url, data, format='json')
