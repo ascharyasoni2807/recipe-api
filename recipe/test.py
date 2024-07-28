@@ -17,11 +17,6 @@ class RecipeAPITestCase(APITestCase):
             email='test@example.com',
             password='testpass'
         )
-        self.user2 = get_user_model().objects.create_user(
-            username='otheruser',
-            email='other@example.com',
-            password='otherpass'
-        )
         self.category = RecipeCategory.objects.create(name='Dessert')
         self.recipe = Recipe.objects.create(
             author=self.user,
