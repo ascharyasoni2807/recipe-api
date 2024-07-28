@@ -11,10 +11,11 @@ django-cloudinary-storage
 django_celery_beat
 django-cors-headers
 django-filter
-django-heroku
+# django-heroku
 django-rest-passwordreset
 djangorestframework
 djangorestframework-simplejwt
+psycopg2-binary>=2.9,<3.0
 drf-spectacular==0.21.1
 factory-boy==3.2.1
 Faker==10.0.0
