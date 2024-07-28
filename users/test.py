@@ -78,7 +78,6 @@ class UserAPITestCase(APITestCase):
 
     def test_user_profile(self):
         url = '/api/user/profile/'
-        print("ll",self.profile)
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['bookmarks'], [])

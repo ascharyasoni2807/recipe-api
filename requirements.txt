@@ -8,6 +8,7 @@ coverage==6.2
 dj-database-url==0.5.0
 Django==3.2.9
 django-cloudinary-storage
+django_celery_beat
 django-cors-headers
 django-filter
 django-heroku
