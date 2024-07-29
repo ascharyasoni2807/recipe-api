@@ -14,6 +14,7 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'send-daily-notifications': {
         'task': 'recipe.tasks.send_daily_notifications',
-        'schedule': crontab(hour="*", minute="*/1"),
+        'schedule': crontab(hour="0", minute="0"),
     },
 }
+        # 'schedule': crontab(hour="0", minute="0"),
