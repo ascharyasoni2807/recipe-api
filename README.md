@@ -41,17 +41,18 @@ Create a user with your real email id ( so you will receive mail on that )  - > 
 
 To test email function make changes here - 
 
-In Celery.py 
-app.conf.beat_schedule = {
-    'send-daily-notifications': {
-        'task': 'recipe.tasks.send_daily_notifications',
-        # for every 24 hour
-        'schedule': crontab(hour="0", minute="0"),
-    },
-}
+In Celery.py  
 
-# change above one to this  for getting email in every one minute
-# 'schedule':crontab(minute="*", hour="*") 
+    app.conf.beat_schedule = {
+            'send-daily-notifications': {
+                'task': 'recipe.tasks.send_daily_notifications',
+                # for every 24 hour
+                'schedule': crontab(hour="0", minute="0"),
+                    },
+    }
+
+ change above one to this  for getting email in every one minute
+'schedule':crontab(minute="*", hour="*") 
 
 
 Result - <img width="1152" alt="image" src="https://github.com/user-attachments/assets/ad1ced25-944a-468c-8405-60122992e30d">
