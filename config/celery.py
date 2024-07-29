@@ -14,8 +14,9 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'send-daily-notifications': {
         'task': 'recipe.tasks.send_daily_notifications',
+        # for every 24 hour
         'schedule': crontab(hour="0", minute="0"),
     },
 }
 # change this to for getting email in every one minute
-# 'schedule': crontab(hour="*", minute="*/1"),
+# 'schedule':crontab(minute="*", hour="*") 
