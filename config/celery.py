@@ -17,4 +17,5 @@ app.conf.beat_schedule = {
         'schedule': crontab(hour="0", minute="0"),
     },
 }
-        # 'schedule': crontab(hour="0", minute="0"),
+# change this to for getting email in every one minute
+# 'schedule': crontab(hour="*", minute="*/1"),
